@@ -38,7 +38,9 @@ public class Rule0005BuildInvLineBuffer2 : DiagnosticAnalyzer
 
     private static void CheckForBuildInvLineBuffer2Usage(SyntaxNodeAnalysisContext ctx)
     {
-        var invocation = (InvocationExpressionSyntax)ctx.Node;
+        if (ctx.Node is not InvocationExpressionSyntax invocation)
+            return;
+
         // Get the expression being invoked, e.g., PurchPostPrepmt.BuildInvLineBuffer2()
         var expr = invocation.Expression;
 

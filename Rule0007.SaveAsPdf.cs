@@ -20,7 +20,9 @@ public class Rule0007SaveAsPdf : DiagnosticAnalyzer
 
     private static void CheckForSaveAsPdfUsage(SyntaxNodeAnalysisContext ctx)
     {
-        var invocation = (InvocationExpressionSyntax)ctx.Node;
+        if (ctx.Node is not InvocationExpressionSyntax invocation)
+            return;
+
         // Get the expression being invoked, e.g., PurchPostPrepmt.BuildInvLineBuffer2()
         var expr = invocation.Expression;
 
@@ -49,7 +51,7 @@ public class Rule0007SaveAsPdf : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0007SaveAsPdf = new(
             id: "CC0007",
             title: "Usage of SaveAsPdf function",
-            messageFormat: "Use SaveAs syntax instead with usage of TempBlob and Streams",
+            messageFormat: "Use SaveAs syntax instead with usage of RecordRef if needed",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
             description: "Raise a diagnostic when there is SaveAsPdf fuction",

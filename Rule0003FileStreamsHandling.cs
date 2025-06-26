@@ -20,7 +20,9 @@ public class Rule0003FileStreamsHandling : DiagnosticAnalyzer
 
     private static void CheckForSaveAsPdfUsage(SyntaxNodeAnalysisContext ctx)
     {
-        var invocation = (InvocationExpressionSyntax)ctx.Node;
+        if (ctx.Node is not InvocationExpressionSyntax invocation)
+            return;
+
         // Get the expression being invoked, e.g., PurchPostPrepmt.BuildInvLineBuffer2()
         var expr = invocation.Expression;
 
