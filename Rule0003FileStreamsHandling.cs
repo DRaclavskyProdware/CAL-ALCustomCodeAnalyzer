@@ -28,7 +28,7 @@ public class Rule0003FileStreamsHandling : DiagnosticAnalyzer
         var symbol = symbolInfo.Symbol;
 
         // If the symbol is missing (method doesn't exist), fallback to syntax-based detection
-        string? methodName = null;
+        string methodName = null;
         if (symbol is IMethodSymbol methodSymbol)
         {
             methodName = methodSymbol.Name;

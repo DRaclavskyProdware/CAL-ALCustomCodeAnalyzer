@@ -46,7 +46,7 @@ public class Rule0005BuildInvLineBuffer2 : DiagnosticAnalyzer
         var symbol = symbolInfo.Symbol;
 
         // If the symbol is missing (method doesn't exist), fallback to syntax-based detection
-        string? methodName = null;
+        string methodName = null;
         if (symbol is IMethodSymbol methodSymbol)
         {
             methodName = methodSymbol.Name;
