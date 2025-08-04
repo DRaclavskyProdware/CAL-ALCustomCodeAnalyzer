@@ -41,18 +41,27 @@ public class Rule0005BuildInvLineBuffer2 : DiagnosticAnalyzer
         if (ctx.Node is not InvocationExpressionSyntax invocation)
             return;
 
-        // Get the expression being invoked, e.g., PurchPostPrepmt.BuildInvLineBuffer2()
-        var expr = invocation.Expression;
+        // Try to get the symbol info for the invocation
+        var symbolInfo = ctx.SemanticModel.GetSymbolInfo(invocation);
+        var symbol = symbolInfo.Symbol;
 
-        // Check if the invoked method's name is BuildInvLineBuffer2
-        string methodName = null;
-        if (expr is MemberAccessExpressionSyntax memberAccess)
+        // If the symbol is missing (method doesn't exist), fallback to syntax-based detection
+        string? methodName = null;
+        if (symbol is IMethodSymbol methodSymbol)
         {
-            methodName = memberAccess.Name.Identifier.ValueText;
+            methodName = methodSymbol.Name;
         }
-        else if (expr is IdentifierNameSyntax identifier)
+        else
         {
-            methodName = identifier.Identifier.ValueText;
+            var expr = invocation.Expression;
+            if (expr is MemberAccessExpressionSyntax memberAccess)
+            {
+                methodName = memberAccess.Name.Identifier.ValueText;
+            }
+            else if (expr is IdentifierNameSyntax identifier)
+            {
+                methodName = identifier.Identifier.ValueText;
+            }
         }
 
         if (string.Equals(methodName, "BuildInvLineBuffer2", StringComparison.OrdinalIgnoreCase))
