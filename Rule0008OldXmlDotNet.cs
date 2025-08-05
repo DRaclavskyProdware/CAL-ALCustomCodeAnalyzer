@@ -46,6 +46,6 @@ public class Rule0008OldXmlDotnet : DiagnosticAnalyzer
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
             description: "Raise a diagnostic when the variable is of type old Xml Dotnet.",
-            helpLinkUri: "https://some.url/CC0002");
+            helpLinkUri: "https://some.url/CC0008");
     }
 }

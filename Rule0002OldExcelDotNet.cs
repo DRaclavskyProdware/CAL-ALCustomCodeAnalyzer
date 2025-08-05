@@ -50,10 +50,10 @@ public class Rule0002OldExcelDotnet : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0002OldExcelDotnet = new(
             id: "CC0002",
             title: "Usage of Automation Variables",
-            messageFormat: "Variable '{0}' is old Excel DotNet variable. Rewrite with Excel Buffer and Excel Automation.",
+            messageFormat: "Variable '{0}' is old Excel DotNet variable. Rewrite with Excel Buffer and Excel Automation. You can use tenterCell and texcelSheetCode snippets to get started.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when the variable is of type old Excel Dotnet and named XlApp, XlWrkBk, XlWrkSht, or XlRange.",
-            helpLinkUri: "https://some.url/CC0002");
+            description: "Raise a diagnostic when the variable is of type old Excel Dotnet and named XlApp, XlWrkBk, XlWrkSht, or XlRange.");
+            //helpLinkUri: "https://some.url/CC0002");
     }
 }

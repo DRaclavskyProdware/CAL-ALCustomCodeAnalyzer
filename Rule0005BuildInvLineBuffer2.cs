@@ -81,7 +81,7 @@ public class Rule0005BuildInvLineBuffer2 : DiagnosticAnalyzer
             messageFormat: "Replace with BuildInvLineBuffer",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when there is BuildInvLineBuffer2 variable",
-            helpLinkUri: "https://some.url/CC0002");
+            description: "Raise a diagnostic when there is BuildInvLineBuffer2 variable");
+            //helpLinkUri: "https://some.url/CC0005");
     }
 }

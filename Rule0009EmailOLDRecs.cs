@@ -9,7 +9,7 @@ namespace CustomCodeCop;
 public class Rule0009EmailOLDRecs : DiagnosticAnalyzer
 {
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
-        ImmutableArray.Create<DiagnosticDescriptor>(DiagnosticDescriptors.Rule0004OutlookAutomation);
+        ImmutableArray.Create<DiagnosticDescriptor>(DiagnosticDescriptors.Rule0009EmailOLDRecs);
 
     public override void Initialize(AnalysisContext context)
     {
@@ -32,14 +32,14 @@ public class Rule0009EmailOLDRecs : DiagnosticAnalyzer
             // Fallback parsing: check if text contains old type names
             if (syntaxText.Contains("E-Mail On Behalf OLD") || syntaxText.Contains("E-Mail Setup OLD") || syntaxText.Contains("E-Mail Body Text OLD"))
             {
-                ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0004OutlookAutomation, variable.GetLocation(), syntaxText));
+                ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0009EmailOLDRecs, variable.GetLocation(), syntaxText));
             }
         }
     }
 
     public static class DiagnosticDescriptors
     {
-        public static readonly DiagnosticDescriptor Rule0004OutlookAutomation = new(
+        public static readonly DiagnosticDescriptor Rule0009EmailOLDRecs = new(
             id: "CC0009",
             title: "Usage of Email OLD object",
             messageFormat: "Variable '{0}' was used for email handling. Replace with Mail Templates/Mail Scenarios logic",

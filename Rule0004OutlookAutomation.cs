@@ -42,10 +42,10 @@ public class Rule0004OutlookAutomation : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0004OutlookAutomation = new(
             id: "CC0004",
             title: "Usage of Outlook object",
-            messageFormat: "Variable '{0}' was used for email handling. Rewrite with Record \"Email Item\" or Codeunit \"Email Message\"",
+            messageFormat: "Variable '{0}' was used for email handling. Rewrite with Record \"Email Item\" or Codeunit \"Email Message\". You can use tsentEmail snippet to get started.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when the variable is of type old Outlook Automation or SMTP",
-            helpLinkUri: "https://some.url/CC0002");
+            description: "Raise a diagnostic when the variable is of type old Outlook Automation or SMTP");
+            //helpLinkUri: "https://some.url/CC0004");
     }
 }

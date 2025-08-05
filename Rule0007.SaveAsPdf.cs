@@ -64,6 +64,6 @@ public class Rule0007SaveAsPdf : DiagnosticAnalyzer
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
             description: "Raise a diagnostic when there is SaveAsPdf fuction",
-            helpLinkUri: "https://some.url/CC0002");
+            helpLinkUri: "https://some.url/CC0007");
     }
 }

@@ -15,10 +15,10 @@ public class Rule0003FileStreamsHandling : DiagnosticAnalyzer
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSyntaxNodeAction(CheckForSaveAsPdfUsage, SyntaxKind.InvocationExpression);
+        context.RegisterSyntaxNodeAction(CheckForFileUsage, SyntaxKind.InvocationExpression);
     }
 
-    private static void CheckForSaveAsPdfUsage(SyntaxNodeAnalysisContext ctx)
+    private static void CheckForFileUsage(SyntaxNodeAnalysisContext ctx)
     {
         if (ctx.Node is not InvocationExpressionSyntax invocation)
             return;
@@ -60,10 +60,10 @@ public class Rule0003FileStreamsHandling : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0003FileStreamsHandling = new(
             id: "CC0003",
             title: "Usage of Upload functions",
-            messageFormat: "Use UploadIntoStream syntax instead with usage of TempBlob and Streams",
+            messageFormat: "Use UploadIntoStream syntax instead with usage of TempBlob and Streams. You can use tuploadImageStream snipped for inspiration. UploadIntoStream can be also used withou a File.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when there is Upload fuction",
-            helpLinkUri: "https://some.url/CC0002");
+            description: "Raise a diagnostic when there is Upload fuction");
+            //helpLinkUri: "https://some.url/CC0003");
     }
 }
