@@ -1,0 +1,271 @@
+
+{
+    "Snippet: EnterCellProcedure":{
+		"scope": "al",
+		"prefix": "tenterCellprocedure",
+		"body": [
+			"//Define ExcelBuffer as global temporary var",
+			"local procedure EnterCell(RowNo: Integer; ColumnNo: Integer; CellValue: Text[250]; Bold: Boolean; UnderLine: Boolean; NumberFormat: Text[30]; FontName: Text[30])",
+			"begin",
+			"    ExcelBuffer.Init();",
+			"    ExcelBuffer.Validate(\"Row No.\", RowNo);",
+			"    ExcelBuffer.Validate(\"Column No.\", ColumnNo);",
+			"    ExcelBuffer.\"Cell Value as Text\" := CellValue;",
+			"    ExcelBuffer.Bold := Bold;",
+			"    ExcelBuffer.NumberFormat := NumberFormat;",
+			"    ExcelBuffer.FontName := FontName;",
+			"    ExcelBuffer.Insert();",
+			"end;"
+		],
+		"description": "EnterCell procedure for rewriting old Excel code"
+	},
+
+	"Snippet: EnterCellFormulaProcedure":{
+		"scope": "al",
+		"prefix": "tEnterCellFormula",
+		"body": [
+			"local procedure EnterCellFormula(RowNo: Integer; ColumnNo: Integer; CellValue: Text[250]; Bold: Boolean; UnderLine: Boolean; NumberFormat: Text[30]; FontName: Text[30])",
+			"begin",
+			"   ExcelBuffer.Init();",
+			"   ExcelBuffer.Validate(\"Row No.\", RowNo);",
+			"   ExcelBuffer.Validate(\"Column No.\", ColumnNo);",
+			"   ExcelBuffer.Formula := CellValue;",
+			"   ExcelBuffer.Bold := Bold;",
+			"   ExcelBuffer.NumberFormat := NumberFormat;",
+			"   ExcelBuffer.FontName := FontName;",
+			"   ExcelBuffer.Insert();",
+			"end;"
+		],
+		"description": "Enter Cell Formula procedure"
+	},
+
+	"Snippet: EnterCellLine":{
+		"scope": "al",
+		"prefix": "tenterCellLine",
+		"body": [
+			"EnterCell(RowNo, ColNo, '${1:Value}', ${2:Bold(true or false)}, false, '', '');"
+		],
+		"description": "Line for EnterCell procedure"
+	},
+
+	"Snippet: ExcelSheetCode":{
+		"scope": "al",
+		"prefix": "texcelSheetCode",
+		"body": [
+			"    //Define ExcelBuffer as global temporary var",
+			"    ExcelBuffer.CreateNewBook(Sheetname);",
+			"    ExcelBuffer.WriteSheet(Sheetname, CompanyName, UserId);",
+			"    ExcelBuffer.CloseBook();",
+			"    //Formating",
+			"    ExcelAutomation.InitExcel();",
+			"    ExcelAutomation.OpenWorkbook(ExcelBuffer.GetServerTempFile());",
+			"    ExcelAutomation.SetCurrentSheet(Sheetname);",
+			"    //Here comes custom code, where you can specify width of columns, Autofit, Freezepane, etc. from ExcelAutomation",
+			"    ExcelAutomation.SaveWorkbook();",
+        	"    ExcelAutomation.CloseWorkbook();",
+			"",
+			"    lFileName := StrSubstNo('%3 %1%2.xlsx', Format(Today), Format(Time, 0, '<Hours24><Minutes,2><Seconds,2>'), Sheetname);",
+			"    TempBlob.CreateOutStream(OStream);",
+            "    ExcelBuffer.SaveToStream(OStream, true);",
+            "    TempBlob.CreateInStream(IStream);",
+            "    DownloadFromStream(IStream, '', '', '', lFileName);"
+		],
+		"description": "Excel Sheet Code"	
+	},
+
+	"Snippet ExcelSheetVariables":{
+		"scope": "al",
+		"prefix": "texcelSheetVariables",
+		"body": [
+			"var",
+			"    ExcelAutomation: Codeunit \"Excel Automation\";",
+			"    TempBlob: Codeunit \"Temp Blob\";",
+			"    OStream: OutStream;",
+			"    IStream: InStream;",
+			"    lFileName: Text;",
+			"    Sheetname: Label '${1:NameOfSheet}';",
+			"    ExcelBuffer: Record \"Excel Buffer\" temporary;",
+			"    FileMgmt: Codeunit \"File Management\";",
+		],
+		"description": "Excel Sheet variables "
+	},
+
+	"Snippet: UploadImageStream":{
+		"scope": "al",
+		"prefix": "tuploadImageStream",
+		"body": [
+			"local procedure UploadImageStream()",
+			"var",
+			"    IStream: InStream;",
+			"    ${1:FileName}: Text;",
+			"begin",
+			"    if File.UploadIntoStream('${2:UploadDialog}', '', 'Image Files (jpg/png/gif)|*.jpg;*.png;*.gif', ${1:FileName}, IStream) then begin",
+			"        Clear(Rec.${4:NameOfField});",
+			"        Rec.${3:NameOfField}.ImportStream(IStream, ${1:FileName});",
+			"        Rec.Modify();",
+			"    end;",
+			"end;"	
+		],
+		"description": "Upload Media field to page using streams"
+	}, 
+
+	"Snippet: DownloadImageFromStream":{
+		"scope": "al",
+		"prefix": "tdownloadImageStream",
+		"body": [
+			"local procedure DownloadImageFromStream()",
+			"var",
+			"    IStream: InStream;",
+			"    ${1:FileName}: Text;",
+			"    OStream: OutStream;",
+			"    TempBlob: Codeunit \"Temp Blob\";",
+			"begin",
+			"    if not Rec.${2:NameOfField}.HasValue then",
+			"        exit;",
+			"",
+			"    TempBlob.CreateOutStream(OStream);",
+			"    Rec.${2:NameOfField}.ExportStream(OStream);",
+			"    TempBlob.CreateInStream(IStream);",
+			"",
+			"    ${2:FileName} := 'Name you want to save' + '.jpg';",
+			"    File.DownloadFromStream(IStream, 'Download Picture', '', 'Image Files (jpg/png/gif)|*.jpg;*.png;*.gif', ${1:FileName});",
+			"end;"
+		],
+		"description": "Download Media Image using streams"
+	},
+
+	"Snippet: GetReportName":{
+		"scope": "al",
+		"prefix": "tgetReportName",
+		"body": [
+			"local procedure GetReportName(): Text",
+			"begin",
+			"    exit(DelStr(CurrReport.ObjectId, 1, StrPos(CurrReport.ObjectId, ' ')));",
+			"end;"
+		],
+		"description": "Get Report Name procedure"
+	}, 
+
+	"Snippet: SaveReportAsPDF":{
+		"scope": "al",
+		"prefix": "tsaveReportAsPDF",
+		"body": [
+			"procedure DownloadAnyReportAsPdf(iRecVariant: Variant; iMailTemplateNo: Integer; iDim1Code: Code[20]; iReportID: Integer; iDocNo: text; iDocName: Text): Boolean",
+			"var",
+			"   IStream: InStream;",
+			"   OStream: OutStream;",
+			"   Parameters: Text;",
+			"   RecRef: RecordRef;",
+			"   RecRef2: RecordRef;",
+			"   TempBlob: Codeunit \"Temp Blob\";",
+			"   OfficetoPDFManagement: Codeunit \"Office to PDF Management\";",
+			"   ToFile: Text;",
+			"begin",
+			"   Parameters := GetRequestPageParameters(iReportID);",
+			"",
+			"   //Based on ReportSelections.SaveAnyRecordReportAsPdf, but added requestpage parameters",
+			"   RecRef.GetTable(iRecVariant);",
+			"   TempBlob.CreateOutStream(OStream);",
+        	"   if REPORT.SaveAs(iReportID, Parameters, REPORTFORMAT::Pdf, OStream, RecRef) then begin",
+            "      OfficetoPDFManagement.AddWatermark(TempBlob, iMailTemplateNo, iDim1Code, true); //Optional PDF background based on Mail Templates",
+            "      ToFile := StrSubstNo('%1 %2.pdf', iDocName, iDocNo);",
+            "      TempBlob.CreateInStream(IStream);",
+            "      DownloadFromStream(IStream, '', '', '', ToFile);",
+            "      exit(true);",
+        	"   end else",
+        	"       exit(false);",
+    		"end;"
+		],
+		"description": "Save Report in PDF format using SaveAs function"
+	},
+
+	"Snippet: GetRequestPageParameters":{
+		"scope": "al",
+		"prefix": "tgetRequestPageParameters",
+		"body": [
+			"local procedure GetRequestPageParameters(iReportID: Integer) Result: Text",
+			"var",
+			"   ObjectOptions: Record \"Object Options\";",
+			"   IStream: InStream;",
+			"begin",
+			"   ObjectOptions.SetRange(\"Object ID\", iReportID);",
+			"   ObjectOptions.SetRange(\"Object Type\", ObjectOptions.\"Object Type\"::Report);",
+			"   ObjectOptions.SetRange(\"Company Name\", CompanyName);",
+			"   ObjectOptions.SetRange(\"User Name\", UserId);",
+			"   if not ObjectOptions.FindLast() then",
+			"       exit;",
+			"",
+			"   ObjectOptions.CalcFields(\"Option Data\");",
+			"   ObjectOptions.\"Option Data\".CreateInStream(IStream, TextEncoding::Windows);",
+			"   IStream.ReadText(Result);",
+			"end;"
+		],
+		"description": "GetRequestPageParameters function needed for DownloadAnyReportAsPdf"
+	},
+
+	"Snippet: SentAnEmail":{
+		"scope": "al",
+		"prefix": "tsentEmail",
+		"body": [
+			"//Define Record TempEmailItem Record \"Temp Email Item\" temporary as local or global variable",
+			"Clear(TempEmailItem);",
+			"",
+			"TempEmailItem.Initialize();",
+			"TempEmailItem.\"Send to\" := ${1:SentToVariable};",
+			"TempEmailItem.\"Send CC\" := ${2:SentToCC};",
+			"TempEmailItem.Subject := ${3:Subject};",
+			"TempEmailItem.SetBodyText(${4:Body});",
+			"TempEmailItem.\"Plaintext Formatted\" := false;",
+			"TempEmailItem.Insert();",
+			"TempEmailItem.Send(true, Enum::\"Email Scenario\"::Default);"
+		],
+		"description": "Sent an Email using Temp Email"
+	},
+
+	"Snippet: HttpContent":{
+		"scope": "al",
+		"prefix": "thttpWebService",
+		"body": [
+			"var",
+			"   Client: HttpClient;",
+			"   Response: HttpResponseMessage;",
+			"   URL: Text;",
+			"   InStr: InStream;",
+			"   OutStr: OutStream;",
+			"   TempBlob: Codeunit \"Temp Blob\";",
+			"begin",
+			"   URL := 'herePasteTheURL;",
+			"   if Client.Get(URL, Response) then begin",
+			"      if Response.IsSuccessStatusCode() then begin",
+			"         Response.Content().ReadAs(InStr);",
+			"         //Here you use Rec. or TempBlob to Create OutStream",
+			"         TempBlob.CreateOutStream(OutStr);",
+			"         CopyStream(OutStr, InStr);",
+			"         //Here you can Modify the Record or do what you want to do with data you got from webservice",
+			"      end;",
+			"   end;",
+			"end;"
+		],
+		"description": "Get data from webservice"
+	},
+	"Snippet: QRCode":{
+		"scope": "al",
+		"prefix": "initQRCode",
+		"body": [
+			"local procedure InitQR(FileName: Text): Text",
+    		"var",
+        	"   Base64Convert: Codeunit \"Base64 Convert\";",
+        	"   TempBlob: Codeunit \"Temp Blob\";",
+        	"   client: HttpClient;",
+        	"   response: HttpResponseMessage;",
+        	"   InStr: InStream;",
+    		"begin,",
+        	"   client.Get('https://barcode.tec-it.com/barcode.ashx?data=' + FileName + '&code=QRCode', response);",
+        	"   TempBlob.CreateInStream(InStr);",
+        	"   response.Content().ReadAs(InStr);",
+        	"   QR := Base64Convert.ToBase64(InStr);",
+        	"   exit(QR);",
+    		"end;"
+		]
+	}
+}
