@@ -60,7 +60,7 @@ public class Rule0003FileStreamsHandling : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0003FileStreamsHandling = new(
             id: "CC0003",
             title: "Usage of Upload functions",
-            messageFormat: "Use UploadIntoStream syntax instead with usage of TempBlob and Streams. You can use tuploadImageStream snipped for inspiration. UploadIntoStream can be also used withou a File.",
+            messageFormat: "Use UploadIntoStream syntax instead with usage of TempBlob and Streams. You can use tuploadImageStream snipped for inspiration. UploadIntoStream can be also used withou a File variable.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
             description: "Raise a diagnostic when there is Upload fuction");

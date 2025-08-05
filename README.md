@@ -18,5 +18,7 @@ You can find many fixes and code samples, how to fix some of the errors/warnings
 
 Another big help is to create you own snippets file. The provided ALCustomSnippets file contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Paste this file to C:\Users\your_username\AppData\Roaming\Code\User\snippets. You can then access it from VS Code like this: File -> Preferences -> Configure Snippets.
 
+##Disclaimer
+
 Inspired by LinterCop from Stefan Maron. Big thanks to him for creating a custom template for custom analyzer, which helped me to get started with this.
 If you're not using LinterCop yet, you can check how it works at https://github.com/StefanMaron/BusinessCentral.LinterCop .

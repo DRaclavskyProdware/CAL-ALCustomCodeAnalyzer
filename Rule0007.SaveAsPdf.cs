@@ -60,10 +60,10 @@ public class Rule0007SaveAsPdf : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0007SaveAsPdf = new(
             id: "CC0007",
             title: "Usage of SaveAsPdf function",
-            messageFormat: "Use SaveAs syntax with usage of Streams and RecordRef (is using a Record)",
+            messageFormat: "For simple report download, use SaveAs syntax with usage of Streams and RecordRef (if using a Record). You can also use tsaveReportAsPDF snippet, which also takes background based on Mail Template or use function dirrectly from Report Selection.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when there is SaveAsPdf fuction",
-            helpLinkUri: "https://some.url/CC0007");
+            description: "Raise a diagnostic when there is SaveAsPdf fuction");
+            //helpLinkUri: "https://some.url/CC0007");
     }
 }
