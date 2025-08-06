@@ -134,6 +134,29 @@
 		"description": "Download Media Image using streams"
 	},
 
+	"Snippet: DownloadTxtFileFromStream":{
+		"scope": "al",
+		"prefix": "tdownloadFileStream",
+		"body": [
+			"local procedure DownloadTxtFileFromStream(${3:YourRecord}: Record ${3:YourRecord})",
+			"var",
+			"    IStream: InStream;",
+			"    ${1:FileName}: Text;",
+			"    OStream: OutStream;",
+			"    TempBlob: Codeunit \"Temp Blob\";",
+			"begin",
+			"    ${2:FileName} := 'Name you want to save' + '.txt'; //You can write values to txt, or save any other file type want",
+			"    TempBlob.CreateOutStream(OStream);",
+			"",
+			"    OStream.WriteText('This is a text file content.'); //This is how you can save the values. You can also use TextBuilder for more complex lists",
+			"    TempBlob.CreateInStream(IStream);",
+			"",
+			"    DownloadFromStream(IStream, '', '', 'Filter on file types', ${1:FileName});",
+			"end;"
+		],
+		"description": "Download Txt File using streams"
+	},
+
 	"Snippet: GetReportName":{
 		"scope": "al",
 		"prefix": "tgetReportName",
