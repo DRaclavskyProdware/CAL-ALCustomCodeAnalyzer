@@ -41,11 +41,11 @@ public class Rule0010JsonDotNet : DiagnosticAnalyzer
     {
         public static readonly DiagnosticDescriptor Rule0010JsonDotNet = new(
             id: "CC0008",
-            title: "Usage of DotNet Xml Variables",
+            title: "Usage of DotNet Json Variables",
             messageFormat: "Variable '{0}' is old Json DotNet variable. Rewrite with native AL JsonObject, JsonToken, JsonArray and JsonValue versions.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when the variable is of type old Xml Dotnet.");
+            description: "Raise a diagnostic when the variable is of type old Json Dotnet.");
             //helpLinkUri: "https://some.url/CC0008");
     }
 }
