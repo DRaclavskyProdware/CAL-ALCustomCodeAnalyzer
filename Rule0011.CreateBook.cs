@@ -15,10 +15,10 @@ public class Rule0011CreateBook : DiagnosticAnalyzer
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSyntaxNodeAction(CheckForSaveAsPdfUsage, SyntaxKind.InvocationExpression);
+        context.RegisterSyntaxNodeAction(CheckCreateBookUsage, SyntaxKind.InvocationExpression);
     }
 
-    private static void CheckForSaveAsPdfUsage(SyntaxNodeAnalysisContext ctx)
+    private static void CheckCreateBookUsage(SyntaxNodeAnalysisContext ctx)
     {
         if (ctx.Node is not InvocationExpressionSyntax invocation)
             return;
