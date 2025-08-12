@@ -13,12 +13,12 @@ public class Rule0001Codeunit1 : DiagnosticAnalyzer
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeEmailOLDRecs),
+        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeCU1),
          SymbolKind.GlobalVariable,
          SymbolKind.LocalVariable);
     }
 
-    private void AnalyzeEmailOLDRecs(SymbolAnalysisContext ctx)
+    private void AnalyzeCU1(SymbolAnalysisContext ctx)
     {
         IVariableSymbol variable = (IVariableSymbol)ctx.Symbol;
 
@@ -40,7 +40,7 @@ public class Rule0001Codeunit1 : DiagnosticAnalyzer
     public static class DiagnosticDescriptors
     {
         public static readonly DiagnosticDescriptor Rule0001Codeunit1 = new(
-            id: "CC0009",
+            id: "CC0001",
             title: "Usage of Codeunit1 object",
             messageFormat: "Codeunit 1 doesn't exist anymore. Replace with Codeunit \"Auto Format\". To replace Autoformat function use ResolveAutoFormat function.",
             category: "Design",

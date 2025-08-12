@@ -13,12 +13,12 @@ public class Rule0013HttpWebRequestMgtCU : DiagnosticAnalyzer
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeOldHttpVars),
+        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeOldHttpCU),
          SymbolKind.GlobalVariable,
          SymbolKind.LocalVariable);
     }
 
-    private void AnalyzeOldHttpVars(SymbolAnalysisContext ctx)
+    private void AnalyzeOldHttpCU(SymbolAnalysisContext ctx)
     {
         IVariableSymbol variable = (IVariableSymbol)ctx.Symbol;
 
@@ -41,11 +41,11 @@ public class Rule0013HttpWebRequestMgtCU : DiagnosticAnalyzer
     {
         public static readonly DiagnosticDescriptor Rule0013HttpWebRequestMgtCU = new(
             id: "CC0013",
-            title: "Usage of DotNet Http Variables",
+            title: "Usage of old Http Web Request Mgt. Codeunit",
             messageFormat: "Use native HttpClient and HttpRequestMessage instead of Http Web Request Mgt. (mostly OnPrem) for better performance and modern syntax. Go to link for official documentation.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when the variable is of type old Http Dotnet.",
+            description: "Raise a diagnostic when the variable is of type old Http CU.",
             helpLinkUri: "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-httpclient");
     }
 }

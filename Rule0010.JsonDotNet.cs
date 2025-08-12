@@ -13,12 +13,12 @@ public class Rule0010JsonDotNet : DiagnosticAnalyzer
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeOldXmlVars),
+        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeOldJsonVars),
          SymbolKind.GlobalVariable,
          SymbolKind.LocalVariable);
     }
 
-    private void AnalyzeOldXmlVars(SymbolAnalysisContext ctx)
+    private void AnalyzeOldJsonVars(SymbolAnalysisContext ctx)
     {
         IVariableSymbol variable = (IVariableSymbol)ctx.Symbol;
 
@@ -40,7 +40,7 @@ public class Rule0010JsonDotNet : DiagnosticAnalyzer
     public static class DiagnosticDescriptors
     {
         public static readonly DiagnosticDescriptor Rule0010JsonDotNet = new(
-            id: "CC0008",
+            id: "CC0010",
             title: "Usage of DotNet Json Variables",
             messageFormat: "Variable '{0}' is old Json DotNet variable. Rewrite with native AL JsonObject, JsonToken, JsonArray and JsonValue versions.",
             category: "Design",
