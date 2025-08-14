@@ -42,10 +42,10 @@ public class Rule0008OldXmlDotnet : DiagnosticAnalyzer
         public static readonly DiagnosticDescriptor Rule0008OldXmlDotnet = new(
             id: "CC0008",
             title: "Usage of DotNet Xml Variables",
-            messageFormat: "Variable '{0}' is old Xml DotNet variable. Rewrite with native AL Xml versions.",
+            messageFormat: "Variable '{0}' is old Xml DotNet variable. Rewrite with native AL Xml versions. Check the article link for more information.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
             description: "Raise a diagnostic when the variable is of type old Xml Dotnet.",
-            helpLinkUri: "https://some.url/CC0008");
+            helpLinkUri: "https://www.dvlprlife.com/2022/12/dynamics-365-business-central-create-an-xml-file-in-al/");
     }
 }

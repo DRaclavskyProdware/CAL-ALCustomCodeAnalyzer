@@ -77,15 +77,13 @@
 		"scope": "al",
 		"prefix": "texcelSheetVariables",
 		"body": [
-			"var",
 			"    ExcelAutomation: Codeunit \"Excel Automation\";",
 			"    TempBlob: Codeunit \"Temp Blob\";",
 			"    OStream: OutStream;",
 			"    IStream: InStream;",
 			"    lFileName: Text;",
 			"    Sheetname: Label '${1:NameOfSheet}';",
-			"    ExcelBuffer: Record \"Excel Buffer\" temporary;",
-			"    FileMgmt: Codeunit \"File Management\";",
+			"    ExcelBuffer: Record \"Excel Buffer\" temporary;"
 		],
 		"description": "Excel Sheet variables "
 	},
@@ -295,6 +293,34 @@
         	"   response.Content().ReadAs(InStr);",
         	"   QR := Base64Convert.ToBase64(InStr);",
         	"   exit(QR);",
+    		"end;"
+		]
+	},
+	"Snippet: XmlInit":{
+		"scope": "al",
+		"prefix": "tInitXMLDoc",
+		"body": [
+			"local procedure InitXMLDoc(var xmlDoc: XmlDocument)",
+    		"var",
+        	"   xmlDec: XmlDeclaration;",
+    		"begin",
+        	"   xmlDoc := XmlDocument.Create();",
+        	"   xmlDec := XmlDeclaration.Create('1.0', 'UTF-8', 'no');",
+        	"   xmlDoc.SetDeclaration(xmlDec);",
+    		"end;"
+		]
+	},
+	"Snippet: XmlAddValue":{
+		"scope": "al",
+		"prefix": "tAddXmlValue",
+		"body": [
+			"local procedure AddChildWithValue(var Parent: XmlElement; ChildName: Text; ChildVariant: Variant)",
+    		"var",
+        	"   ChildNode: XmlElement;",
+    		"begin",
+        	"   ChildNode := XmlElement.Create(ChildName);",
+        	"   ChildNode.Add(ChildVariant);",
+        	"   Parent.Add(ChildNode);",
     		"end;"
 		]
 	}
