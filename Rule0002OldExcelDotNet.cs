@@ -38,7 +38,8 @@ public class Rule0002OldExcelDotnet : DiagnosticAnalyzer
             var syntaxText = syntaxNode.ToString();
 
             // Fallback parsing: check if text contains old type names
-            if (syntaxText.Contains("XlApp") || syntaxText.Contains("XlWrkBk") || syntaxText.Contains("XlWrkSht") || syntaxText.Contains("XlRange"))
+            if (syntaxText.Contains("XlApp") || syntaxText.Contains("XlWrkBk") || syntaxText.Contains("XlWrkSht") || syntaxText.Contains("XlRange")
+                || syntaxText.Contains("DotNet WorksheetClass") || syntaxText.Contains("DotNet WorkbookClass") || syntaxText.Contains("DotNet ApplicationClass") || syntaxText.Contains("DotNet Range"))
             {
                 ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0002OldExcelDotnet, variable.GetLocation(), syntaxText));
             }
