@@ -18,6 +18,13 @@ You can find many fixes and code samples, how to fix some of the errors/warnings
 
 Another big help is to create you own snippets file. The provided ALCustomSnippets file contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Paste this file to C:\Users\your_username\AppData\Roaming\Code\User\snippets. You can then access it from VS Code like this: File -> Preferences -> Configure Snippets.
 
+## Reimplementation Cheat sheet
+
+This analyzer doesn't aim to cover every possible DotNet/OnPrem/Removed object - it targets the objects/functions which I encounterd repeatedly during C/AL -> AL conversions.
+This sheet was shown on BC Tech Days 2023. Side by side compared old DotNet/OnPrem/Removed objects with new, Cloud ready implementations. Since it's from 2023, some things may be little different today, but not by much.
+
+Disclaimer: This document was created by BCILITY Business Software Solution and was shown during BC Tech Days 2023,  I'm not a creator of this document.
+
 ## Disclaimer
 
 Inspired by LinterCop from Stefan Maron. Big thanks to him for creating a custom template for custom analyzer, which helped me to get started with this.
