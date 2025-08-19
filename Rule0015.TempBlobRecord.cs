@@ -6,19 +6,19 @@ using System.Collections.Immutable;
 namespace CustomCodeCop;
 
 [DiagnosticAnalyzer]
-public class Rule0001Codeunit1 : DiagnosticAnalyzer
+public class Rule0015TempBlobRecord : DiagnosticAnalyzer
 {
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
-        ImmutableArray.Create<DiagnosticDescriptor>(DiagnosticDescriptors.Rule0001Codeunit1);
+        ImmutableArray.Create<DiagnosticDescriptor>(DiagnosticDescriptors.Rule0015TempBlobRecord);
 
     public override void Initialize(AnalysisContext context)
     {
-        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeCU1),
+        context.RegisterSymbolAction(new Action<SymbolAnalysisContext>(this.AnalyzeTempBlobRecord),
          SymbolKind.GlobalVariable,
          SymbolKind.LocalVariable);
     }
 
-    private void AnalyzeCU1(SymbolAnalysisContext ctx)
+    private void AnalyzeTempBlobRecord(SymbolAnalysisContext ctx)
     {
         IVariableSymbol variable = (IVariableSymbol)ctx.Symbol;
 
@@ -30,22 +30,21 @@ public class Rule0001Codeunit1 : DiagnosticAnalyzer
             var syntaxText = syntaxNode.ToString();
 
             // Fallback parsing: check if text contains old type names
-            if (syntaxText.Contains("Codeunit1"))
+            if (syntaxText.Contains("TempBlob"))
             {
-                ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0001Codeunit1, variable.GetLocation(), syntaxText));
+                ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0015TempBlobRecord, variable.GetLocation(), syntaxText));
             }
         }
     }
 
     public static class DiagnosticDescriptors
     {
-        public static readonly DiagnosticDescriptor Rule0001Codeunit1 = new(
-            id: "CC0001",
-            title: "Usage of Codeunit1 object",
-            messageFormat: "Codeunit 1 doesn't exist anymore. To replace Autoformat function use ResolveAutoFormat function from Codeunit \"Auto Format\". Check Reimplementation-Cheat-Sheet for other funtions.",
+        public static readonly DiagnosticDescriptor Rule0015TempBlobRecord = new(
+            id: "CC0015",
+            title: "Usage of TempBlob Record",
+            messageFormat: "Replace with Codeunit \"Temp Blob\". Use InStream and OutStream to read/write data.",
             category: "Design",
             defaultSeverity: DiagnosticSeverity.Warning, isEnabledByDefault: true,
-            description: "Raise a diagnostic when the variable is of type Codeunit1",
-            helpLinkUri: "https://github.com/microsoft/ALAppExtensions/blob/main/BREAKINGCHANGES.md#auto-format-module");
+            description: "Raise a diagnostic when the variable is of type TempBlob.");
     }
 }
