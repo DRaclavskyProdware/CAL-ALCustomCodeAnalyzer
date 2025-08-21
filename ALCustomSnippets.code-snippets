@@ -136,7 +136,7 @@
 		"scope": "al",
 		"prefix": "tdownloadFileStream",
 		"body": [
-			"local procedure DownloadTxtFileFromStream(${3:YourRecord}: Record ${3:YourRecord})",
+			"local procedure DownloadTxtFileFromStream()",
 			"var",
 			"    IStream: InStream;",
 			"    ${1:FileName}: Text;",
