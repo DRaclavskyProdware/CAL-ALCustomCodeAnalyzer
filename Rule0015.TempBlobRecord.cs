@@ -29,11 +29,15 @@ public class Rule0015TempBlobRecord : DiagnosticAnalyzer
             var syntaxNode = declaringSyntaxReference.GetSyntax();
             var syntaxText = syntaxNode.ToString();
 
-            // Fallback parsing: check if text contains old type names
-            if (syntaxText.Contains("TempBlob"))
+            // Check if there is Record TempBlob but exclude Codeunit "Temp Blob" if it's also named as variable TempBlob
+            if (syntaxText.Contains("Record TempBlob"))
             {
                 ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0015TempBlobRecord, variable.GetLocation(), syntaxText));
             }
+            // if (string.Equals(syntaxText, "Record TempBlob", StringComparison.OrdinalIgnoreCase))
+            // {
+            //     ctx.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.Rule0015TempBlobRecord, variable.GetLocation(), syntaxText));
+            // }
         }
     }
 
