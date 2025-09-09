@@ -16,7 +16,7 @@ You can find many fixes and code samples, how to fix some of the errors/warnings
 
 ## Installation
 
-For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version or just general file (at the very bottom) from Releases. 
+For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version or just general file (at the very bottom) from <b>Releases</b>. 
 ![Releases](<Screenshot 2025-09-04 093524.png>)
 
 Google Chrome and Edge will require to confirm you really want to download the file (because of type .dll). Confirm and save the .dll file wherever you like, just avoid using Users folders like Documents as it might cause some issues with loading the analyzer.
@@ -26,16 +26,16 @@ Then in your global settings.json add a path to "al.codeAnalyzers" like this (it
         "${CodeCop}",
         "${UICop}",
         "${PerTenantExtensionCop}",
-        "C:/SomeFolder/Analyzer/CustomCodeCop.dll",
+        <b>"C:/SomeFolder/Analyzer/CustomCodeCop.dll"</b>,
     ]
 
 Be aware that if you use workspace file, the codeAnalyzers from the global settings.json won’t be loaded. Same with local settings.json. If you want to use it in the workspace as well, you need to add it in the workspace file, same way as in global settings.json.
 
 ## Custom snippets file
 
-Another big help is to create you own snippets file. The provided ALCustomSnippets file contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Download this file directly from the repository and paste it to C:\Users\your_username\AppData\Roaming\Code\User\snippets. 
+Another big help is to create you own snippets file. The provided ALCustomSnippets file contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Download this file directly from the repository and paste it to <i>C:\Users\your_username\AppData\Roaming\Code\User\snippets</i>. 
 
-You can then access it from VS Code like this: File -> Preferences -> Configure Snippets.
+You can then access it from VS Code like this: <i>File -> Preferences -> Configure Snippets</i>.
 
 ## Reimplementation Cheat sheet
 
