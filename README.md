@@ -1,6 +1,6 @@
 # C/AL-AL Code Analyzer
 
-This code analyzer is meant to help anyone, who runs into some errors during the C/AL -> AL code conversion.
+This code analyzer is meant to help anyone, who runs into some errors during the C/AL -> AL code conversion or OnPrem -> Cloud upgrade/conversion.
 
 ## What does it do?
 
@@ -29,17 +29,17 @@ Then in your global settings.json add a path to "al.codeAnalyzers" like this (it
         <b>"C:/SomeFolder/Analyzer/CustomCodeCop.dll"</b>,
     ]
 
-Be aware that if you use workspace file, the codeAnalyzers from the global settings.json won’t be loaded. Same with local settings.json. If you want to use it in the workspace as well, you need to add it in the workspace file, same way as in global settings.json.
+Be aware that if you use workspace file or local settings.json, the codeAnalyzers from the global settings.json won’t be loaded. If you want to use it in the workspace as well, you need to add it in the workspace file, same way as in global settings.json.
 
 ## Custom snippets file
 
-Another big help is to create you own snippets file. The provided ALCustomSnippets file contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Download this file directly from the repository and paste it to <i>C:\Users\your_username\AppData\Roaming\Code\User\snippets</i>. 
+Another big help is to create you own snippets file. You can find the provided <i>ALCustomSnippets</i> file in the <b>assets</b> folder. It contains some snippets, which can help you better understand, how to rewrite old code like Dotnet Excel or old Email functions. Download this file directly from the repository and paste it to <i>C:\Users\your_username\AppData\Roaming\Code\User\snippets</i>. 
 
 You can then access it from VS Code like this: <i>File -> Preferences -> Configure Snippets</i>.
 
 ## Reimplementation Cheat sheet
 
-This analyzer doesn't aim to cover every possible DotNet/OnPrem/Removed object - it targets the objects/functions which I encountered repeatedly during C/AL -> AL conversions.
+This analyzer doesn't aim to cover every possible DotNet/OnPrem/Removed object - it targets the objects/functions which I encountered repeatedly during C/AL -> AL conversions. You can fiind this sheet in the <b>assets</b> folder.
 This sheet was shown on BC Tech Days 2023. Side by side compared old DotNet/OnPrem/Removed objects with new, Cloud ready implementations. Since it's from 2023, some things may be little different today, but not by much.
 
 Disclaimer: This document was created by BCILITY Business Software Solution and was shown during BC Tech Days 2023,  I'm not a creator of this document.
