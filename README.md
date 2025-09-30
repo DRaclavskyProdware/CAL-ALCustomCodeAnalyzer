@@ -17,7 +17,7 @@ You can find many fixes and code samples, how to fix some of the errors/warnings
 ## Installation
 
 For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version or just general file (at the very bottom) from <b>Releases</b>. 
-![Releases](<Screenshot 2025-09-04 093524.png>)
+![assets](<assets/Screenshot 2025-09-04 093524.png>)
 
 Google Chrome and Edge will require to confirm you really want to download the file (because of type .dll). Confirm and save the .dll file wherever you like, just avoid using Users folders like Documents as it might cause some issues with loading the analyzer.
 Then in your global settings.json add a path to "al.codeAnalyzers" like this (it’s very likely, you already have some code cops there):
