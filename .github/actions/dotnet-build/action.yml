@@ -68,7 +68,7 @@ runs:
       if: ${{ inputs.asset-publish == 'true' }}
       with:
         name: ${{ inputs.asset-name }}
-        path: bin/Release/netstandard2.1/CustomCodeCop.dll
+        path: bin/Release/${{ steps.get-target-framework.outputs.target-framework }}/CustomCodeCop.dll
         compression-level: 0 # no compression
 
     ### Upload Asset as Latest
@@ -78,7 +78,7 @@ runs:
       if: ${{ inputs.asset-publish == 'true' && inputs.al-latest == 'true' }}
       with:
         name: CustomCodeCop.dll
-        path: bin/Release/netstandard2.1/CustomCodeCop.dll
+        path: bin/Release/${{ steps.get-target-framework.outputs.target-framework }}/CustomCodeCop.dll
         compression-level: 0 # no compression
 
     ### Upload Asset as Pre-Release
@@ -88,5 +88,5 @@ runs:
       if: ${{ inputs.asset-publish == 'true' && inputs.al-prerelease == 'true' }}
       with:
         name: CustomCodeCop.AL-PreRelease.dll
-        path: bin/Release/netstandard2.1/CustomCodeCop.dll
+        path: bin/Release/${{ steps.get-target-framework.outputs.target-framework }}/CustomCodeCop.dll
         compression-level: 0 # no compression
