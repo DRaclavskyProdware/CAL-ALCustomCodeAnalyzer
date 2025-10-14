@@ -6,17 +6,17 @@ This code analyzer is meant to help anyone, who runs into some errors during the
 
 Many feautures, which were supported back in NAV or in BC OnPrem version doesn't work in the Cloud. Microsoft analyzer usually tells you something like:
 
-"Codeunit 'Something' is missing.
+<i>"Codeunit 'Something' is missing.</i>
 
-The application object or method 'something' has scope 'OnPrem' and cannot be used for 'Extension/Cloud' development.
+<i>The application object or method 'something' has scope 'OnPrem' and cannot be used for 'Extension/Cloud' development.</i>
 
-Then you have to search the documentation or articles, how to rewrite/replace it. This analyzer should help you with some of these errors.
+Then you have to search the documentation or articles, how to rewrite/replace it. This analyzer should help you with some of these errors and save you some time.
 
 You can find many fixes and code samples, how to fix some of the errors/warnings here https://github.com/microsoft/ALAppExtensions/blob/main/BREAKINGCHANGES.md
 
 ## Installation
 
-For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version or just general file (at the very bottom) from <b>Releases</b>. 
+For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version from <b>Releases</b>. 
 ![assets](<assets/Screenshot 2025-09-04 093524.png>)
 
 Google Chrome and Edge will require to confirm you really want to download the file (because of type .dll). Confirm and save the .dll file wherever you like, just avoid using Users folders like Documents as it might cause some issues with loading the analyzer.
@@ -26,10 +26,10 @@ Then in your global settings.json add a path to "al.codeAnalyzers" like this (it
         "${CodeCop}",
         "${UICop}",
         "${PerTenantExtensionCop}",
-        <b>"C:/SomeFolder/Analyzer/CustomCodeCop.dll"</b>,
+        <b>"C:/SomeFolder/Analyzer/CustomCodeCop.AL-VERSION_NUMBER.dll"</b>,
     ]
 
-Be aware that if you use workspace file or local settings.json, the codeAnalyzers from the global settings.json won’t be loaded. If you want to use it in the workspace as well, you need to add it in the workspace file, same way as in global settings.json.
+Be aware that if you use workspace file or local settings.json, the codeAnalyzers from the global settings.json won’t be loaded. If you want to use it in the workspace as well, you need to add it in the workspace file, same way as in global settings.json (in that case you should delete/comment out the path in global settings.json as conflict might occur).
 
 ## Custom snippets file
 
