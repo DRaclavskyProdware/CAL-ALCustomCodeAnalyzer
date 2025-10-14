@@ -1,10 +1,10 @@
 # C/AL-AL Code Analyzer
 
-This code analyzer is meant to help anyone, who runs into some errors during the C/AL -> AL code conversion or OnPrem -> Cloud upgrade/conversion.
+This code analyzer is meant to help anyone who runs into some errors during the C/AL -> AL code conversion or OnPrem -> Cloud upgrade/conversion.
 
 ## What does it do?
 
-Many feautures, which were supported back in NAV or in BC OnPrem version doesn't work in the Cloud. Microsoft analyzer usually tells you something like:
+Many features, which were supported back in NAV or in BC OnPrem version doesn't work in the Cloud. Microsoft analyzer usually tells you something like:
 
 <i>"Codeunit 'Something' is missing.</i>
 
@@ -19,7 +19,7 @@ You can find many fixes and code samples, how to fix some of the errors/warnings
 For now, this analyzer can be installed only as direct path in settings.json. Download your AL language specific version from <b>Releases</b>. 
 ![assets](<assets/Screenshot 2025-09-04 093524.png>)
 
-Google Chrome and Edge will require to confirm you really want to download the file (because of type .dll). Confirm and save the .dll file wherever you like, just avoid using Users folders like Documents as it might cause some issues with loading the analyzer.
+Google Chrome and Edge will you require to confirm you really want to download the file (because of type .dll). Confirm and save the .dll file wherever you like, just avoid using Users folders like Documents as it might cause some issues with loading the analyzer.
 Then in your global settings.json add a path to "al.codeAnalyzers" like this (it’s very likely, you already have some code cops there):
 
 "al.codeAnalyzers": [
@@ -39,7 +39,7 @@ You can then access it from VS Code like this: <i>File -> Preferences -> Configu
 
 ## Reimplementation Cheat sheet
 
-This analyzer doesn't aim to cover every possible DotNet/OnPrem/Removed object - it targets the objects/functions which I encountered repeatedly during C/AL -> AL conversions. You can fiind this sheet in the <b>assets</b> folder.
+This analyzer doesn't aim to cover every possible DotNet/OnPrem/Removed object - it targets the objects/functions which I encountered repeatedly during C/AL -> AL conversions. You can find this sheet in the <b>assets</b> folder.
 This sheet was shown on BC Tech Days 2023. Side by side compared old DotNet/OnPrem/Removed objects with new, Cloud ready implementations. Since it's from 2023, some things may be little different today, but not by much.
 
 Disclaimer: This document was created by BCILITY Business Software Solution and was shown during BC Tech Days 2023,  I'm not a creator of this document.
